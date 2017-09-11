@@ -1,0 +1,39 @@
+.header {
+    height: 720px;
+    background-image: radial-gradient(circle at 15% 13%, rgba(113, 106, 173, 0.0), #d06be4),
+        linear-gradient(#865ed4, #865ed4);
+}
+
+.header__title {
+    width: 535px;
+    text-align: left;
+    color: #ffffff;
+    margin: 0;
+}
+
+.header__description {
+    margin: 0;
+    padding: 0;
+    width: 349px;
+    font-family: 'MuseoSansCyrl300';
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1.48;
+    text-align: left;
+    color: #ffffff;
+}
+
+.header__call-to-action {
+    display: block;
+    padding: 23px 0;
+    text-decoration: none;
+    width: 240px;
+    border-radius: 14px;
+    background-color: #ffd54e;
+    font-family: 'MuseoSansCyrl700';
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    text-align: center;
+    color: #865ed4;
+}

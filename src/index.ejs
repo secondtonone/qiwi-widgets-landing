@@ -3,26 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=1, user-scalable=yes">
     <title>QIWI widgets</title>
 </head>
 <body>
-
-    <div class="widgets">
-
-        <% data.htmlWebpackPlugin.options.env.widgets.forEach(function(widget, index) { %>
-
-            <h1>Виджет <%= widget.url %> </h1>
-
-            <iframe width="<%= widget.width %>" height="<%= widget.height %>" src="//widget.qiwi.com/<%= widget.url %>?<%= widget.params %>" allowtransparency="true" scrolling="no" frameborder="0"></iframe>
-
-            <h2>Код для вставки</h2>
-
-            <textarea class="code" readonly="true" > <iframe  width="<%= widget.width %>" height="<%= widget.height %>"src="//widget.qiwi.com/<%= widget.url %>?<%= widget.params %>" allowtransparency="true" scrolling="no" frameborder="0"></iframe> </textarea>
-
-        <% }); %>
-
-
-    </div>
-
+    <div id="root"></div>
 </body>
 </html>
