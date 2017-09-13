@@ -1,0 +1,93 @@
+.library-nav {
+    width: 220px;
+    font-family: 'MuseoSansCyrl500';
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.38;
+    letter-spacing: 1.5px;
+    text-align: left;
+    color: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform .1s;
+
+
+    @media (max-width: 950px) {
+        display: none;
+    }
+
+    & ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    &__name-group {
+        padding-left: 25px;
+    }
+
+    & li {
+        list-style-type: none;
+    }
+
+    &__group {
+        padding: 0;
+        text-transform: uppercase;
+        margin: 0 0 46px;
+            }
+
+    &__types {
+        margin: 20px 0 0;
+        padding: 0;
+        text-transform: none;
+    }
+
+    &__type {
+        margin: 14px 0 0;
+        position: relative;
+
+
+
+        &::before {
+            content: '—';
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-family: 'MuseoSansCyrl100';
+            font-size: 18px;
+            font-weight: 100;
+            line-height: 1.28;
+            text-align: left;
+            color: #cccccc;
+        }
+
+        &--selected::before {
+            color: #ff8c00;
+            font-family: 'MuseoSansCyrl900';
+            font-weight: 900;
+        }
+
+    }
+
+    &__type a{
+        display: inline-block;
+        padding: 0 0 0 25px;
+        font-family: 'MuseoSansCyrl500';
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.28;
+        text-align: left;
+        color: #000000;
+    }
+
+    &__type--selected a{
+        font-family: 'MuseoSansCyrl900';
+        font-weight: 900;
+    }
+
+
+    & a {
+        text-decoration: none;
+    }
+
+}

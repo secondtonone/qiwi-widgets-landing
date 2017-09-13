@@ -1,0 +1,36 @@
+.library {
+    margin-left: 220px;
+
+    @media (max-width: 950px) {
+        margin: 0 auto;
+    }
+
+    &__group {
+        width: 728px;
+        border-bottom: solid 1px #979797;
+        margin: 0 auto 80px;
+
+        &:last-child {
+            border: 0;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 950px) {
+            width: 100%;
+        }
+    }
+
+    &__title {
+
+    }
+
+    &__description {
+        font-family: 'MuseoSansCyrl300';
+        font-size: 26px;
+        font-weight: 300;
+        line-height: 1.23;
+        text-align: left;
+        color: #000000;
+        margin: 34px 0 80px;
+    }
+}

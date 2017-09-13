@@ -1,12 +1,40 @@
 .widgets {
     background-color: rgb(247,247,247);
-    padding: 78px 0 95px 0;
+    padding: 78px 0 15px 0;
+    position: relative;
+    min-width: 768px;
+    box-sizing: border-box;
+
+    @media (max-width: 950px) {
+
+       padding: 78px 20px 15px;
+
+    }
+
 }
 
-.widgets__code {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 16px;
-    line-height: 1.31;
-    text-align: left;
-    color: #000000;
+.widgets__title {
+    width: 858px;
+
+    @media (max-width: 950px) {
+        font-size: 36px;
+        line-height: 1.39;
+        width: 596px;
+
+    }
 }
+
+
+
+.widgets__library {
+    width: 950px;
+    margin: 78px auto 0;
+    position: relative;
+
+    @media (max-width: 950px) {
+
+        width: 100%;
+
+    }
+}
+

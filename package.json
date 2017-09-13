@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "preact": "^8.2.5",
-    "preact-compat": "^3.17.0"
+    "preact-compat": "^3.17.0",
+    "url-search-params-polyfill": "^2.0.1"
   }
 }
