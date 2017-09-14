@@ -21,7 +21,7 @@ export default class WidgetInfo extends Component {
 
         const iframeType = transparent? 'widget-info__iframe--bordered': '';
 
-        const widgetUrl = 'https://widget.qiwi.com/';
+        const widgetUrl = 'https://widget.qiwi.com';
 
         const public_key = new URLSearchParams (window.location.search).get('public_key');
 
@@ -29,15 +29,18 @@ export default class WidgetInfo extends Component {
 
         const querystring = new URLSearchParams(params);
 
-        const code = `<iframe width="${width}" height="${height}" src="${widgetUrl}/${link}?${querystring.toString()}" allowtransparency="true" scrolling="no" frameborder="0"></iframe>`;
+        const urlWidget = `${widgetUrl}/${link}?${querystring.toString()}`;
+
+        const code = `<iframe width="${width}" height="${height}" src="${urlWidget}" allowtransparency="true" scrolling="no" frameborder="0"></iframe>`;
 
 
         return (<div class="widget-info" id={id}>
             <h3 class="widget-info__title"><a href={`#${id}`}>{title}</a></h3>
 
-            <iframe width={width} height={height} src={`${widgetUrl}/${link}?${querystring.toString()}`} allowtransparency="true" scrolling="no" frameborder="0" class={`widget-info__iframe ${iframeType}`}></iframe>
+            <iframe width={width} height={height} src={urlWidget} allowtransparency="true" scrolling="no" frameborder="0" class={`widget-info__iframe ${iframeType}`}></iframe>
 
             <div class="widget-info__code" >{code}</div>
+
             <textarea class="widget-info__code--hidden" ref={ c => this.widgetCodeBlock = c }></textarea>
 
             <button type="button" class="widget-info__get-code-button" onClick={() => this.copyToClipboard(code)}> &lt;/&gt; Скопировать код</button>

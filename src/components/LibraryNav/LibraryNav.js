@@ -29,9 +29,6 @@ export default class LibraryNav extends Component {
 
             const Y = topForPos <= 0?Math.abs(topForPos)+78:0;
 
-            console.log(Y);
-
-
             return {
                 transform: `translateY(${Y>4800?4800:Y}px)`
             };

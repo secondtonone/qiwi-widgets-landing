@@ -10,7 +10,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition: transform .1s;
+    transition: transform .2s ease-out;
 
 
     @media (max-width: 950px) {
