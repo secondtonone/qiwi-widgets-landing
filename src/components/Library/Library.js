@@ -8,7 +8,7 @@ export default class Library extends Component {
 
     render({widgetsLibrary}){
 
-        const { library, types } = widgetsLibrary;
+        const { library, types, widgetUrl, public_key } = widgetsLibrary;
 
         return (<div class="library">
 
@@ -17,7 +17,7 @@ export default class Library extends Component {
                     <h2 class="library__title">{group.title}</h2>
                     <p class="library__description">{group.desc}</p>
                     {group.types.map((type) => {
-                        return (<WidgetInfo id={type} widget={types[type]}/>);
+                        return (<WidgetInfo id={type} widget={types[type]} widgetUrl={widgetUrl} public_key={public_key}/>);
                     })}
 
                 </article>);

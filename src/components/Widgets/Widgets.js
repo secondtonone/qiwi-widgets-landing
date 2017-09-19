@@ -19,12 +19,12 @@ export default class Widgets extends Component {
         this.setState({topForPos:this.widgetLibraryBlock.getBoundingClientRect().top});
     };
 
-    render({idWidgetsBlock, widgetsLibrary}, {topForPos}){
+    render({idWidgetsBlock, widgetsLibrary, widgetUrl, public_key}, {topForPos}){
         return (<section class="widgets" id={idWidgetsBlock}>
             <h1 class="widgets__title">Выберите нужный размер и скопируйте код для внедрения на собственный сайт</h1>
             <div class="widgets__library" ref={ c => this.widgetLibraryBlock = c }>
                 <LibraryNav widgetsLibrary={widgetsLibrary} topForPos={topForPos}/>
-                <Library widgetsLibrary={widgetsLibrary}/>
+                <Library widgetsLibrary={{...widgetsLibrary,widgetUrl,public_key}}/>
             </div>
 
         </section>);

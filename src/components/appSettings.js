@@ -1,5 +1,7 @@
 export default {
     idWidgetsBlock: 'widgets',
+    widgetUrl: 'https://widget.qiwi.com',
+    public_key: '',
     widgetsLibrary: {
         navigation: [{
             id: 'widgets',

@@ -15,17 +15,13 @@ export default class WidgetInfo extends Component {
         document.execCommand("Copy");
     }
 
-    render({widget, id}){
+    render({widget, id, widgetUrl, public_key}){
 
         const { title, height, width, transparent, params, link} = widget;
 
         const iframeType = transparent? 'widget-info__iframe--bordered': '';
 
-        const widgetUrl = 'https://widget.qiwi.com';
-
-        const public_key = new URLSearchParams (window.location.search).get('public_key');
-
-        params['public_key'] = public_key || '';
+        params['public_key'] = public_key;
 
         const querystring = new URLSearchParams(params);
 

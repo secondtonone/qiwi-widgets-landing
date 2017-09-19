@@ -6,7 +6,42 @@ import logo from './assets/qiwi-logo.svg'
 import widgetPic from './assets/widget-pic.png'
 
 export default class Header extends Component {
-    render({idWidgetsBlock}){
+
+    componentDidMount(){
+
+        if(this.props.public_key) {
+            this.getMerchant(this.props.public_key).then((data) => {
+
+                if(data) {
+                    this.setState({
+                        merchantName: data.provider_name
+                    });
+                }
+            });
+        }
+    }
+
+    getMerchant = (public_key) => {
+
+        return fetch(`https://edge.qiwi.com/checkout/merchant/info?public_key=${public_key}`, {
+                mode: 'cors'
+            })
+            .then(response => {
+
+                if(response.status >= 400 && response.status < 500){
+                    throw new Error('NotFoundError')
+                }
+                if(response.status >= 500) {
+                    throw new Error('ServerError')
+                }
+                return response;
+
+            })
+            .then(response => response.json());
+    }
+
+
+    render({idWidgetsBlock}, {merchantName}){
         return (<header class="header">
             <a href="/" class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>
             <section class="header__call-to-action">
@@ -14,7 +49,11 @@ export default class Header extends Component {
                 <p class="header__description">Размести платежную форму у себя на сайте и твори добро во благо</p>
                 <a href={`#${idWidgetsBlock}`} class="header__action">Разместить</a>
             </section>
-            <img src={widgetPic} alt="widgets" class="header__illustration" width="480" height="720"/>
+            <div class="header__illustration">
+                <img src={widgetPic} alt="widgets" width="480" height="720"/>
+                <div class="header__widget-title">{merchantName || 'Ваш фонд'}</div>
+                <div class="header__widget-title header__widget-title--second">{merchantName || 'Ваш фонд'}</div>
+            </div>
         </header>);
     }
 }
