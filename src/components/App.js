@@ -28,7 +28,7 @@ export default class App extends Component {
             <Header idWidgetsBlock={idWidgetsBlock} public_key={public_key}/>
             <main>
                 <About/>
-
+                <Widgets {...this.appSettings}/>
                 <div class="thanking">Спасибо! Вместе мы сделаем мир лучше :)</div>
             </main>
             <footer>© 2016, КИВИ Банк (АО), лицензия ЦБ РФ № 2241</footer>
