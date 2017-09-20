@@ -38,18 +38,18 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/,
-                use: [
-                    {
+                use: [{
                         loader: "style-loader"
                     },
                     {
-                        loader: 'css-loader', options: { importLoaders: 1 }
+                        loader: 'css-loader',
+                        options: { importLoaders: 1 }
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
                             plugins: () => {
-                                autoprefixer({ browsers: [ 'last 2 versions' ] });
+                                autoprefixer({ browsers: ['last 2 versions'] });
                             }
                         }
                     },
@@ -92,7 +92,7 @@ module.exports = {
             template: './index.ejs',
             inject: 'body'
         })
-    ]).concat(ENV==='production' ? [
+    ]).concat(ENV === 'production' ? [
         new webpack.optimize.UglifyJsPlugin({
             output: {
                 comments: false
@@ -106,7 +106,7 @@ module.exports = {
     ]),
 
 
-    devtool: ENV==='production' ? 'source-map' : 'cheap-module-eval-source-map',
+    devtool: ENV === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
 
     devServer: {
         port: process.env.PORT || 9440,

@@ -9,12 +9,14 @@ export default class Header extends Component {
 
     componentDidMount(){
 
+        const self = this;
+
         if(this.props.public_key) {
             this.getMerchant(this.props.public_key).then((data) => {
 
                 if(data) {
-                    this.setState({
-                        merchantName: data.provider_name
+                    self.setState({
+                        merchantName: data['provider_name']
                     });
                 }
             });
