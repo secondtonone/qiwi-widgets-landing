@@ -44,6 +44,9 @@ export default class Header extends Component {
 
 
     render({idWidgetsBlock}, {merchantName}){
+
+        const computedMerchantName = merchantName || 'Наименование организации';
+
         return (<header class="header">
             <a href="/" class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>
             <section class="header__call-to-action">
@@ -53,8 +56,8 @@ export default class Header extends Component {
             </section>
             <div class="header__illustration">
                 <img src={widgetPic} alt="widgets" width="480" height="720"/>
-                <div class="header__widget-title">{merchantName || 'Ваш фонд'}</div>
-                <div class="header__widget-title header__widget-title--second">{merchantName || 'Ваш фонд'}</div>
+                <div class="header__widget-title">{ computedMerchantName }</div>
+                <div class="header__widget-title header__widget-title--second">{ computedMerchantName }</div>
             </div>
         </header>);
     }
