@@ -19,8 +19,6 @@ export default class WidgetInfo extends Component {
 
         const { title, height, width, transparent, params, link} = widget;
 
-        const iframeType = transparent? 'widget-info__iframe--bordered': '';
-
         params['public_key'] = public_key;
 
         const querystring = new URLSearchParams(params);
@@ -33,7 +31,7 @@ export default class WidgetInfo extends Component {
         return (<div class="widget-info" id={id}>
             <h3 class="widget-info__title"><a href={`#${id}`}>{title}</a></h3>
 
-            <iframe width={width} height={height} src={urlWidget} allowtransparency="true" scrolling="no" frameborder="0" class={`widget-info__iframe ${iframeType}`}></iframe>
+            <iframe width={width} height={height} src={urlWidget} allowtransparency="true" scrolling="no" frameborder="0" class="widget-info__iframe"></iframe>
 
             <div class="widget-info__code" >{code}</div>
 

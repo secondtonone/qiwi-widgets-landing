@@ -68,7 +68,7 @@ module.exports = {
                 use: 'raw-loader'
             },
             {
-                test: /\.(svg|woff|woff2|eot|ttf|otf)$/,
+                test: /\.(svg|woff|woff2|eot|ttf|otf|ico)$/,
                 use: [{
                     loader: 'url-loader',
                     options: {
