@@ -61,9 +61,15 @@ p {
 
 .thanking {
     padding: 55px 0 44px 0;
+}
+
+.thanking,
+.thanking a {
     font-family: 'MuseoSansCyrl900';
     font-size: 24px;
     font-weight: 900;
+    text-decoration: none;
+    color: #000000;
 }
 
 footer {

@@ -4,7 +4,17 @@ import 'url-search-params-polyfill';
 
 import './WidgetInfo.scss';
 
+
+
 export default class WidgetInfo extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isCodeHidden: true
+        }
+    }
 
     copyToClipboard = (code) => {
 
@@ -12,10 +22,17 @@ export default class WidgetInfo extends Component {
 
         this.widgetCodeBlock.select();
 
+        this.props.addMessage('Код скопирован в буфер обмена');
+
+        this.setState({
+            isCodeHidden: false
+        })
+
         document.execCommand("Copy");
+
     }
 
-    render({widget, id, widgetUrl, public_key}){
+    render({widget, id, widgetUrl, public_key}, {isCodeHidden}){
 
         const { title, height, width, transparent, params, link} = widget;
 
@@ -33,12 +50,11 @@ export default class WidgetInfo extends Component {
 
             <iframe width={width} height={height} src={urlWidget} allowtransparency="true" scrolling="no" frameborder="0" class="widget-info__iframe"></iframe>
 
-            <div class="widget-info__code" >{code}</div>
-
-            <textarea class="widget-info__code--hidden" ref={ c => this.widgetCodeBlock = c }></textarea>
+            <textarea class="widget-info__code-textarea" ref={ c => this.widgetCodeBlock = c }></textarea>
 
             <button type="button" class="widget-info__get-code-button" onClick={() => this.copyToClipboard(code)}> &lt;/&gt; Скопировать код</button>
 
+            <div class={`widget-info__code ${isCodeHidden?'widget-info__code--hidden':''}`}>{code}</div>
         </div>);
     }
 }
