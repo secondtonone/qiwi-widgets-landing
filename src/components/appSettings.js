@@ -42,7 +42,7 @@ export default {
                 "height": 200,
                 "width": 728,
                 "params": {
-                    "button_name": "Помочь сейчас"
+                    "button_name": "Помочь"
                 }
             },
             'widget300x300': {
@@ -53,7 +53,7 @@ export default {
                 "height": 300,
                 "width": 300,
                 "params": {
-                    "button_name": "Помочь сейчас"
+                    "button_name": "Помочь"
                 }
             },
             'widget300x180': {
@@ -64,7 +64,7 @@ export default {
                 "height": 180,
                 "width": 300,
                 "params": {
-                    "button_name": "Помогите сейчас"
+                    "button_name": "Помочь"
                 }
             },
             'smallButton': {
@@ -75,7 +75,7 @@ export default {
                 "height": 65,
                 "width": 175,
                 "params": {
-                    "button_name": "Пожертвовать"
+                    "button_name": "Помочь"
                 }
             },
             'mediumButton': {
@@ -86,7 +86,7 @@ export default {
                 "height": 80,
                 "width": 200,
                 "params": {
-                    "button_name": "Пожертвовать"
+                    "button_name": "Помочь"
                 }
             },
             'bigButton': {
@@ -97,7 +97,7 @@ export default {
                 "height": 100,
                 "width": 220,
                 "params": {
-                    "button_name": "Пожертвовать"
+                    "button_name": "Помочь"
                 }
             }
         }
