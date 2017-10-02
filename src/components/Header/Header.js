@@ -3,49 +3,11 @@ import { h, Component } from 'preact';
 import './Header.scss';
 
 import logo from './assets/qiwi-logo.svg'
-import widgetPic from './assets/widget-pic.png'
+import widgetPic from './assets/widget-pic.svg'
 
 export default class Header extends Component {
 
-    componentDidMount(){
-
-        const self = this;
-
-        if(this.props.public_key) {
-            this.getMerchant(this.props.public_key).then((data) => {
-
-                if(data) {
-                    self.setState({
-                        merchantName: data['provider_name']
-                    });
-                }
-            });
-        }
-    }
-
-    getMerchant = (public_key) => {
-
-        return fetch(`https://edge.qiwi.com/checkout/merchant/info?public_key=${public_key}`, {
-                mode: 'cors'
-            })
-            .then(response => {
-
-                if(response.status >= 400 && response.status < 500){
-                    throw new Error('NotFoundError')
-                }
-                if(response.status >= 500) {
-                    throw new Error('ServerError')
-                }
-                return response;
-
-            })
-            .then(response => response.json());
-    }
-
-
-    render({idWidgetsBlock}, {merchantName}){
-
-        const computedMerchantName = merchantName || 'Наименование организации';
+    render({idWidgetsBlock, merchantName}){
 
         return (<header class="header">
             <a href="/" class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>
@@ -56,8 +18,8 @@ export default class Header extends Component {
             </section>
             <div class="header__illustration">
                 <img src={widgetPic} alt="widgets" width="480" height="720"/>
-                <div class="header__widget-title">{ computedMerchantName }</div>
-                <div class="header__widget-title header__widget-title--second">{ computedMerchantName }</div>
+                <div class="header__widget-title">{ merchantName }</div>
+                <div class="header__widget-title header__widget-title--second">{ merchantName }</div>
             </div>
         </header>);
     }

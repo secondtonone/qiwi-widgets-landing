@@ -46,7 +46,7 @@ export default class LibraryNav extends Component {
                         let href = `#${type}`;
 
                         if(href === hash) {
-                            anchorState += ' library-nav__type--selected';
+                            anchorState = `${anchorState} library-nav__type--selected`;
                         }
 
                         return (<li class={anchorState}><a href={href} onClick={(e) => {
