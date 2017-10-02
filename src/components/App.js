@@ -94,7 +94,7 @@ export default class App extends Component {
             <main>
                 <About/>
                 <Widgets {...this.appSettings} public_key={public_key} addMessage={this.addMessage}/>
-                <div class="thanking">Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами по адресу:<a href="mailto:online@bfkh.ru">online@bfkh.ru</a></div>
+                <div class="thanking">Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Константина Хабенского, свяжитесь с нами по адресу:<a href="mailto:online@bfkh.ru">online@bfkh.ru</a></div>
                 <MessageBox message={message}/>
             </main>
             <footer>© 2016, КИВИ Банк (АО), лицензия ЦБ РФ № 2241</footer>
