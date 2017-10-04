@@ -11,14 +11,14 @@ import appSettings from './appSettings';
 
 export default class App extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.appSettings = appSettings;
 
         this.state = {
             message: '',
-            merchantName: 'Наименование организации',
+            merchantName: '',
             public_key: '',
             appSettings
         }
@@ -45,7 +45,13 @@ export default class App extends Component {
                     });
                 }
             });
+        } else {
+            dataLayer.push({
+                'event': 'publickey.error',
+                'eventAction': 'No public key'
+            });
         }
+
     }
 
     getMerchant = (public_key) => {
@@ -55,12 +61,16 @@ export default class App extends Component {
             })
             .then(response => {
 
-                if(response.status >= 400 && response.status < 500){
+                if(response.status >= 400){
+
+                    dataLayer.push({
+                        'event': 'load.error',
+                        'eventAction': 'Mechant info load error'
+                    });
+
                     throw new Error('NotFoundError')
                 }
-                if(response.status >= 500) {
-                    throw new Error('ServerError')
-                }
+
                 return response;
 
             })
@@ -89,12 +99,32 @@ export default class App extends Component {
 
         const {idWidgetsBlock} = this.appSettings;
 
-        return (<div>
-            <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName}/>
+        const defaultMerchantName = 'Наименование организации';
+
+        return (<div class={!public_key?'page--missed-public-key-error': ''}>
+            {!public_key?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={() => {
+                    dataLayer.push({
+                        'event': 'make.email',
+                        'eventAction': 'Make email to QIWI from error panel'
+                    });
+                }}>widget@qiwi.com</a></div></div>:null}
+            <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName || defaultMerchantName} public_key={public_key}/>
             <main>
                 <About/>
                 <Widgets {...this.appSettings} public_key={public_key} addMessage={this.addMessage}/>
-                <div class="thanking">Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Константина Хабенского, свяжитесь с нами по адресу:<a href="mailto:online@bfkh.ru">online@bfkh.ru</a></div>
+                <div class="thanking">
+                    <div class="thanking__text">{merchantName?<span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Константина Хабенского, свяжитесь с нами по адресу: <a href="mailto:online@bfkh.ru" onClick={() => {
+                            dataLayer.push({
+                                'event': 'make.email',
+                                'eventAction': 'Make email to partner'
+                            });
+                }}>online@bfkh.ru</a></span>:<span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={() => {
+                            dataLayer.push({
+                                'event': 'make.email',
+                                'eventAction': 'Make email to QIWI'
+                            });
+                }}>widget@qiwi.com</a></span>}</div>
+                </div>
                 <MessageBox message={message}/>
             </main>
             <footer>© 2016, КИВИ Банк (АО), лицензия ЦБ РФ № 2241</footer>

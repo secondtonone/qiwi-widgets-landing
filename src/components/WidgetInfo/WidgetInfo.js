@@ -26,7 +26,9 @@ export default class WidgetInfo extends Component {
 
         this.setState({
             isCodeHidden: false
-        })
+        });
+
+
 
         document.execCommand("Copy");
 
@@ -52,7 +54,14 @@ export default class WidgetInfo extends Component {
 
             <textarea class="widget-info__code-textarea" ref={ c => this.widgetCodeBlock = c }></textarea>
 
-            <button type="button" class="widget-info__get-code-button" onClick={() => this.copyToClipboard(code)}> &lt;/&gt; Скопировать код</button>
+            <button type="button" class="widget-info__get-code-button" onClick={() => {
+                    this.copyToClipboard(code);
+
+                     dataLayer.push({
+                        'event': 'copy.code',
+                        'eventAction': `Code of ${title} widget copied`
+                    });
+                }}> &lt;/&gt; Скопировать код</button>
 
             <div class={`widget-info__code ${isCodeHidden?'widget-info__code--hidden':''}`}>{code}</div>
         </div>);

@@ -1,19 +1,24 @@
 import { h, render } from 'preact';
 import './css/style';
 
-const root = document.getElementById('root');
+let root;
 
+const run = () => {
 
-function init() {
-    let App = require('./components/App.js').default;
-    render(<App />,  document.body, root);
+    const App = require('./components/App').default;
+
+    root = render(
+        <App/>,
+        document.body,
+        root || document.getElementById('root')
+    );
+};
+
+if(process.env.NODE_ENV === 'development') {
+    if (module.hot) {
+        require('preact/devtools');
+        module.hot.accept('./components/App', run);
+    }
 }
 
-
-// in development, set up HMR:
-if (module.hot) {
-    //require('preact/devtools');   // turn this on if you want to enable React DevTools!
-    module.hot.accept('./components/App.js', () => requestAnimationFrame(init) );
-}
-
-init();
+run();

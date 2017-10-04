@@ -4,6 +4,10 @@ import './LibraryNav.scss';
 
 export default class LibraryNav extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     componentDidMount(){
 
         this.handleHashChange();
@@ -26,11 +30,16 @@ export default class LibraryNav extends Component {
         const { navigation, types } = widgetsLibrary;
 
         const posForBlock = () => {
+            /*78 - отступ от верха страницы*/
+            let Y = topForPos <= 0?Math.abs(topForPos)+78:0;
 
-            const Y = topForPos <= 0?Math.abs(topForPos)+78:0;
+            /*Если появится плашка с ошибкой добавим ее высоту 86*/
+            if(!this.props.public_key) {
+                Y += 86;
+            }
 
             return {
-                transform: `translateY(${Y>4800?4800:Y}px)`
+                transform: `translateY(${Y>3300?3300:Y}px)`
             };
 
         };
@@ -53,6 +62,12 @@ export default class LibraryNav extends Component {
 
                             this.setState({
                                 hash: href
+                            });
+
+
+                            dataLayer.push({
+                                'event': 'to.widget',
+                                'eventAction': `Transition to ${types[type].name} widget by widget menu`
                             });
 
                         }}>{types[type].name}</a></li>);
