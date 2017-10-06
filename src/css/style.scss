@@ -1,5 +1,4 @@
-@import 'fonts';
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import "fonts";
 
 body {
     background-color: #FFF;
@@ -8,7 +7,7 @@ body {
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'MuseoSansCyrl300';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 18px;
     font-weight: 300;
     text-align: center;
@@ -24,7 +23,7 @@ iframe {
 h1 {
     margin: 0 auto;
     padding: 0;
-    font-family: 'MuseoSansCyrl900';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 42px;
     font-weight: 900;
     line-height: 1.24;
@@ -35,7 +34,7 @@ h1 {
 h2 {
     margin: 0 auto;
     padding: 0;
-    font-family: 'MuseoSansCyrl900';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     opacity: 0.9;
     font-size: 32px;
     font-weight: 900;
@@ -45,7 +44,7 @@ h2 {
 }
 
 h3 {
-    font-family: 'MuseoSansCyrl900';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 30px;
     font-weight: 900;
     line-height: 1.2;
@@ -65,7 +64,7 @@ p {
 
 .thanking,
 .thanking a {
-    font-family: 'MuseoSansCyrl500';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 20px;
     line-height: 1.3;
     font-weight: 500;
@@ -74,7 +73,7 @@ p {
 
 .thanking__text,
 .error-panel__text {
-    width: 940px;
+    max-width: 940px;
     margin: 0 auto;
 }
 
@@ -91,7 +90,7 @@ p {
 
 .error-panel,
 .error-panel a {
-    font-family: 'MuseoSansCyrl500';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 18px;
     font-weight: 500;
     line-height: 1.3;
@@ -108,7 +107,7 @@ p {
 footer {
     height: 100%;
     width: 100%;
-    font-family: 'MuseoSansCyrl500';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 20px;
     font-weight: 500;
     text-align: center;

@@ -6,14 +6,14 @@
     linear-gradient(#865ed4, #865ed4);
     position: relative;
     text-align: left;
-    padding: 60px 0 0 170px;
+    padding-top: 60px;
+    padding-left: 8%;
     overflow: hidden;
     min-width: 768px;
 
-    @media (max-width: 1279px) {
-        padding-left: 30px;
+    @media (min-width: 1600px) {
+        padding-left: 15%;
     }
-
 
 }
 
@@ -70,7 +70,7 @@
     margin: 9px 0 0;
     padding: 0;
     width: 349px;
-    font-family: 'MuseoSansCyrl300';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 21px;
     font-weight: 300;
     line-height: 1.48;
@@ -90,7 +90,7 @@
     width: 240px;
     border-radius: 14px;
     background-color: #ffd54e;
-    font-family: 'MuseoSansCyrl700';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 21px;
     font-weight: 700;
     letter-spacing: -0.2px;
@@ -128,6 +128,10 @@
         right: -25%;
     }
 
+    @media (min-width: 1600px) {
+        right: 15%;
+    }
+
 
 }
 
@@ -145,7 +149,7 @@
     color: rgb(0, 0, 0);
     margin: 0 auto;
     font-size: 22px;
-    font-family: 'MuseoSansCyrl900';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-weight: 900;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -168,7 +172,7 @@
     color: #FFF;
     margin: 0 auto;
     font-size: 22px;
-    font-family: 'MuseoSansCyrl500';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;

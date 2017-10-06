@@ -99,8 +99,6 @@ export default class App extends Component {
 
         const {idWidgetsBlock} = this.appSettings;
 
-        const defaultMerchantName = 'Наименование организации';
-
         return (<div class={!public_key?'page--missed-public-key-error': ''}>
             {!public_key?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={() => {
                     dataLayer.push({
@@ -108,7 +106,7 @@ export default class App extends Component {
                         'eventAction': 'Make email to QIWI from error panel'
                     });
                 }}>widget@qiwi.com</a></div></div>:null}
-            <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName || defaultMerchantName} public_key={public_key}/>
+            <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName} public_key={public_key}/>
             <main>
                 <About/>
                 <Widgets {...this.appSettings} public_key={public_key} addMessage={this.addMessage}/>

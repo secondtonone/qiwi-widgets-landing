@@ -36,7 +36,7 @@ export default class WidgetInfo extends Component {
 
     render({widget, id, widgetUrl, public_key}, {isCodeHidden}){
 
-        const { title, height, width, transparent, params, link} = widget;
+        const { title, height, width, transparent, params={}, link} = widget;
 
         params['public_key'] = public_key;
 

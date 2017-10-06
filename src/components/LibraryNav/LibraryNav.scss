@@ -1,6 +1,6 @@
 .library-nav {
     width: 220px;
-    font-family: 'MuseoSansCyrl500';
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 13px;
     font-weight: 500;
     line-height: 1.38;
@@ -53,7 +53,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            font-family: 'MuseoSansCyrl100';
+            font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
             font-size: 18px;
             font-weight: 100;
             line-height: 1.28;
@@ -63,7 +63,7 @@
 
         &--selected::before {
             color: #ff8c00;
-            font-family: 'MuseoSansCyrl900';
+            font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
             font-weight: 900;
         }
 
@@ -72,7 +72,7 @@
     &__type a{
         display: inline-block;
         padding: 0 0 0 25px;
-        font-family: 'MuseoSansCyrl500';
+        font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
         font-size: 18px;
         font-weight: 500;
         line-height: 1.28;
@@ -81,7 +81,7 @@
     }
 
     &__type--selected a{
-        font-family: 'MuseoSansCyrl900';
+        font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
         font-weight: 900;
     }
 

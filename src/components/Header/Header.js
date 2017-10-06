@@ -9,6 +9,8 @@ export default class Header extends Component {
 
     render({idWidgetsBlock, merchantName, public_key}){
 
+        const defaultMerchantName = 'Наименование организации';
+
         return (<header class="header">
             <div className="header__gradient-block-top"></div>
             <div className="header__gradient-block-bottom"></div>
@@ -25,9 +27,9 @@ export default class Header extends Component {
             </section>
             <div class="header__illustration">
                 <img src={widgetPic} alt="widgets" width="480" height="720" class="header__widgets-pic"/>
-                <div class="header__widget-title">{ merchantName }</div>
+                <div class="header__widget-title">{ merchantName || defaultMerchantName}</div>
                 <div class="header__widget-button">Помочь</div>
-                <div class="header__widget-title header__widget-title--second">{ merchantName }</div>
+                <div class="header__widget-title header__widget-title--second">{ merchantName || defaultMerchantName}</div>
             </div>
         </header>);
     }
