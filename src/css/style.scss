@@ -1,4 +1,5 @@
-@import "fonts";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import 'fonts';
 
 body {
     background-color: #FFF;
@@ -58,6 +59,7 @@ p {
     padding: 0;
 }
 
+
 .thanking {
     padding: 55px 0 44px;
 }
@@ -99,7 +101,7 @@ p {
 }
 
 .page--missed-public-key-error {
-    margin: 86px 0 0;
+    margin: 82px 0 0;
 }
 
 

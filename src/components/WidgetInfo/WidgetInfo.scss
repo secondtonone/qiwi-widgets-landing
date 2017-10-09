@@ -36,6 +36,10 @@
     transition: all 2s ease-out;
     opacity: 1;
     height: 100%;
+    -webkit-user-select: all;  /* Chrome all / Safari all */
+    -moz-user-select: all;     /* Firefox all */
+    -ms-user-select: all;      /* IE 10+ */
+    user-select: all;
 
     &--hidden {
         opacity: 0;
@@ -91,5 +95,17 @@
 
     &:focus {
         outline: none;
+    }
+
+    &:disabled {
+        color: #CCCCCC;
+        border: solid 2px #CCCCCC;
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: rgb(247,247,247);
+            box-shadow: none;
+            border: solid 2px #CCCCCC;
+        }
     }
 }

@@ -61,7 +61,7 @@ export default class WidgetInfo extends Component {
                         'event': 'copy.code',
                         'eventAction': `Code of ${title} widget copied`
                     });
-                }}> &lt;/&gt; Скопировать код</button>
+                }} disabled={!public_key}> &lt;/&gt; Скопировать код</button>
 
             <div class={`widget-info__code ${isCodeHidden?'widget-info__code--hidden':''}`}>{code}</div>
         </div>);
