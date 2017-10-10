@@ -91,6 +91,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.ejs',
             inject: 'body'
+        }),
+        new webpack.ProvidePlugin({
+            'Promise': 'es6-promise',
+            'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
         })
     ]).concat(ENV === 'production' ? [
         new webpack.optimize.UglifyJsPlugin({
