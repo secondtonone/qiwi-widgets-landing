@@ -56,6 +56,14 @@ export default class App extends Component {
 
     getMerchant = (public_key) => {
 
+        /*let url = 'https://my.qiwi.com/partners_api/merchant_widget_info';
+
+        if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+            url = 'http://s3705.qiwi.com/partners_api/merchant_widget_info';
+        }
+
+        let param = `merchant_public_key=${this._merchantId}`;*/
+
         return fetch(`https://edge.qiwi.com/checkout/merchant/info?public_key=${public_key}`, {
                 mode: 'cors'
             })
@@ -95,33 +103,43 @@ export default class App extends Component {
         }, 2000);
     }
 
+    analyticsHandler = (event, eventAction) => {
+        dataLayer.push({
+            event,
+            eventAction
+        });
+    }
+
     render({},{message, merchantName, public_key}){
 
         const {idWidgetsBlock} = this.appSettings;
 
+
+
+
+        const loveSyndromFond = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvTWBSQ6dfdCjBz7g7hH6MYUdV1fGemC9fiQArEZHpPnrV9r9rCiVjgrpKfVQwSz';
+
+        let thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI')}>widget@qiwi.com</a></span>;
+
+        if (merchantName) {
+            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Константина Хабенского, свяжитесь с нами по адресу: <a href="mailto:online@bfkh.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>online@bfkh.ru</a></span>;
+        }
+
+        if(loveSyndromFond) {
+            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Синдром Любви, свяжитесь с нами по адресу: <a href="mailto:info@fondsl.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>info@fondsl.ru</a></span>;
+        }
+
+
+
+
         return (<div class={!public_key?'page--missed-public-key-error': ''}>
-            {!public_key?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={() => {
-                    dataLayer.push({
-                        'event': 'make.email',
-                        'eventAction': 'Make email to QIWI from error panel'
-                    });
-                }}>widget@qiwi.com</a></div></div>:null}
+            {!public_key?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
             <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName} public_key={public_key}/>
             <main>
                 <About/>
                 <Widgets {...this.appSettings} public_key={public_key} addMessage={this.addMessage}/>
                 <div class="thanking">
-                    <div class="thanking__text">{merchantName?<span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Константина Хабенского, свяжитесь с нами по адресу: <a href="mailto:online@bfkh.ru" onClick={() => {
-                            dataLayer.push({
-                                'event': 'make.email',
-                                'eventAction': 'Make email to partner'
-                            });
-                }}>online@bfkh.ru</a></span>:<span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={() => {
-                            dataLayer.push({
-                                'event': 'make.email',
-                                'eventAction': 'Make email to QIWI'
-                            });
-                }}>widget@qiwi.com</a></span>}</div>
+                    <div class="thanking__text">{thankingBlock}</div>
                 </div>
                 <MessageBox message={message}/>
             </main>
