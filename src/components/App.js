@@ -118,6 +118,7 @@ export default class App extends Component {
 
 
         const loveSyndromFond = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvTWBSQ6dfdCjBz7g7hH6MYUdV1fGemC9fiQArEZHpPnrV9r9rCiVjgrpKfVQwSz';
+        сonst advita = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvFp1F6iyeg3gtHqzbHnL4cecgEvDtanSgC6RhPM7RAj4aaRN4cewMjgqyUuHi2X';
 
         let thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI')}>widget@qiwi.com</a></span>;
 
@@ -128,9 +129,10 @@ export default class App extends Component {
         if(loveSyndromFond) {
             thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Синдром Любви, свяжитесь с нами по адресу: <a href="mailto:info@fondsl.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>info@fondsl.ru</a></span>;
         }
-
-
-
+        
+        if(advita) {
+            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом AdVita, свяжитесь с нами по адресу: <a href="mailto:mail@advita.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>mail@advita.ru</a></span>;
+        }
 
         return (<div class={!public_key?'page--missed-public-key-error': ''}>
             {!public_key?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
