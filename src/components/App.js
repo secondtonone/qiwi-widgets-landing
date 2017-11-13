@@ -118,7 +118,7 @@ export default class App extends Component {
 
 
         const loveSyndromFond = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvTWBSQ6dfdCjBz7g7hH6MYUdV1fGemC9fiQArEZHpPnrV9r9rCiVjgrpKfVQwSz';
-        const advita = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvFp1F6iyeg3gtHqzbHnL4cecgEvDtanSgC6RhPM7RAj4aaRN4cewMjgqyUuHi2X';
+        сonst advita = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvFp1F6iyeg3gtHqzbHnL4cecgEvDtanSgC6RhPM7RAj4aaRN4cewMjgqyUuHi2X';
 
         let thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI')}>widget@qiwi.com</a></span>;
 
