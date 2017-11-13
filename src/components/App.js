@@ -114,29 +114,12 @@ export default class App extends Component {
 
         const {idWidgetsBlock} = this.appSettings;
 
-
-
-
-        const loveSyndromFond = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvTWBSQ6dfdCjBz7g7hH6MYUdV1fGemC9fiQArEZHpPnrV9r9rCiVjgrpKfVQwSz';
-        const advita = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvFp1F6iyeg3gtHqzbHnL4cecgEvDtanSgC6RhPM7RAj4aaRN4cewMjgqyUuHi2X';
-        const pamyatpokoleniy = public_key = '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mw1bhrFk1rMCxs3L3PTuCpCZH5ASihxiUTRxQ1buRaQk11Cf3wc5kQ2Q8Ey6ZMZ8';
-        
+        const bfkh = public_key === '5nAq6abtyCz4tcDj89e5w7Y5i524LAFmzrsN6bQTQ3ceEvMvCq55ToeErzhxNemD6rMzCtzRx9jhV5kUUUyG2BC9sqbKjkRVuFjWXicbby5XJjUAnKNcNDdfEZ';
+       
         let thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI')}>widget@qiwi.com</a></span>;
 
-        if (merchantName) {
+        if (bfkh) {
             thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Константина Хабенского, свяжитесь с нами по адресу: <a href="mailto:online@bfkh.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>online@bfkh.ru</a></span>;
-        }
-
-        if(loveSyndromFond) {
-            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Синдром Любви, свяжитесь с нами по адресу: <a href="mailto:info@fondsl.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>info@fondsl.ru</a></span>;
-        }
-        
-        if(advita) {
-            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом AdVita, свяжитесь с нами по адресу: <a href="mailto:mail@advita.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>mail@advita.ru</a></span>;
-        }
-        
-        if(pamyatpokoleniy) {
-            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Память Поколений, свяжитесь с нами по адресу: <a href="mailto:info@гвоздика.рф" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>info@гвоздика.рф</a></span>;
         }
 
         return (<div class={!public_key?'page--missed-public-key-error': ''}>
