@@ -19,7 +19,9 @@ export default class App extends Component {
         this.state = {
             message: '',
             merchantName: '',
-            public_key: '',
+            merchantAlias: '',
+            merchantPublicKey: '',
+            merchantContact: '',
             appSettings
         }
     }
@@ -29,19 +31,27 @@ export default class App extends Component {
 
         const self = this;
 
-        const public_key = new URLSearchParams (window.location.search).get('public_key') || '';
+        const merchantPublicKey = this.getPublicKey();
 
-        if(public_key) {
+        const merchantAlias = this.getAlias();
+
+        console.log(merchantAlias)
+
+        if(merchantPublicKey || merchantAlias) {
 
             this.setState({
-                public_key
+                merchantPublicKey,
+                merchantAlias
             });
 
-            this.getMerchant(public_key).then((data) => {
+            this.getMerchant(merchantPublicKey, merchantAlias).then(data => {
 
-                if(data.provider_name) {
+                if(data.result.merchant_name) {
                     self.setState({
-                        merchantName: data.provider_name
+                        merchantName: data.result.merchant_name,
+                        merchantContact: data.result.merchant_contacts_html,
+                        merchantAlias: data.result.merchant_alias_code,
+                        merchantPublicKey: data.result.merchant_public_key
                     });
                 }
             });
@@ -54,22 +64,42 @@ export default class App extends Component {
 
     }
 
-    getMerchant = (public_key) => {
+    getAlias  = () => {
+        return window.location.pathname.match(/([^\/]*)\/*$/)[1];
+    }
 
-        /*let url = 'https://my.qiwi.com/partners_api/merchant_widget_info';
+    getPublicKey = () => {
+        return new URLSearchParams (window.location.search).get('public_key') || '';
+    }
+
+
+    getMerchant = (merchantPublicKey, merchantAlias) => {
+
+        const self = this;
+
+        let url = 'https://my.qiwi.com/partners_api/merchant_info';
 
         if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
-            url = 'http://s3705.qiwi.com/partners_api/merchant_widget_info';
+            url = 'http://s3705.qiwi.com/partners_api/merchant_info';
         }
 
-        let param = `merchant_public_key=${this._merchantId}`;*/
+        let param = `merchant_public_key=${merchantPublicKey}`;
 
-        return fetch(`https://edge.qiwi.com/checkout/merchant/info?public_key=${public_key}`, {
+
+        if(merchantAlias && !merchantPublicKey) {
+            param = `merchant_alias_code=${merchantAlias}`;
+        }
+
+        return fetch(`${url}?${param}`, {
                 mode: 'cors'
             })
             .then(response => {
 
                 if(response.status >= 400){
+
+                    self.setState({
+                        merchantPublicKey: ''
+                    });
 
                     dataLayer.push({
                         'event': 'load.error',
@@ -110,36 +140,22 @@ export default class App extends Component {
         });
     }
 
-    render({},{message, merchantName, public_key}){
+    render({},{message, merchantName, merchantPublicKey, merchantAlias, merchantContact}){
 
         const {idWidgetsBlock} = this.appSettings;
 
-
-
-
-        const loveSyndromFond = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvTWBSQ6dfdCjBz7g7hH6MYUdV1fGemC9fiQArEZHpPnrV9r9rCiVjgrpKfVQwSz';
-        сonst advita = public_key === '2tbp1WQvsgQeziGY9vTLe9vDZNg7tmCymb4Lh6STQokqKrpCC6qrUUKEDZAJ7mvFp1F6iyeg3gtHqzbHnL4cecgEvDtanSgC6RhPM7RAj4aaRN4cewMjgqyUuHi2X';
-
         let thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI')}>widget@qiwi.com</a></span>;
 
-        if (merchantName) {
-            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Константина Хабенского, свяжитесь с нами по адресу: <a href="mailto:online@bfkh.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>online@bfkh.ru</a></span>;
+        if (merchantContact) {
+            thankingBlock = <span dangerouslySetInnerHTML={{__html:merchantContact}}></span>;
         }
 
-        if(loveSyndromFond) {
-            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом Синдром Любви, свяжитесь с нами по адресу: <a href="mailto:info@fondsl.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>info@fondsl.ru</a></span>;
-        }
-        
-        if(advita) {
-            thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества c Фондом AdVita, свяжитесь с нами по адресу: <a href="mailto:mail@advita.ru" onClick={this.analyticsHandler('make.email', 'Make email to partner')}>mail@advita.ru</a></span>;
-        }
-
-        return (<div class={!public_key?'page--missed-public-key-error': ''}>
-            {!public_key?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
-            <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName} public_key={public_key}/>
+        return (<div class={!merchantPublicKey?'page--missed-public-key-error': ''}>
+            {!merchantPublicKey?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
+            <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName} public_key={merchantPublicKey}/>
             <main>
                 <About/>
-                <Widgets {...this.appSettings} public_key={public_key} addMessage={this.addMessage}/>
+                <Widgets {...this.appSettings} public_key={merchantPublicKey} merchantAlias={merchantAlias} addMessage={this.addMessage}/>
                 <div class="thanking">
                     <div class="thanking__text">{thankingBlock}</div>
                 </div>

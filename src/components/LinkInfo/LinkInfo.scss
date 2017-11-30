@@ -1,4 +1,4 @@
-.widget-info {
+.link-info {
     text-align: left;
     margin: 0 0 80px;
 
@@ -16,21 +16,21 @@
 
 }
 
-.widget-info__iframe {
+.link-info__iframe {
     margin-bottom: 39px;
 
 }
 
-.widget-info__iframe--bordered {
+.link-info__iframe--bordered {
     border: dashed 1px #9b9b9b;
 }
 
-.widget-info__code {
+.link-info__link-text {
     font-family: 'Roboto Mono', monospace;
     font-size: 16px;
     line-height: 1.31;
     text-align: left;
-    color: #000000;
+    color: #0023a0;
     word-break: break-word;
     margin-top: 35px;
     transition: all 2s ease-out;
@@ -40,17 +40,10 @@
     -moz-user-select: all;     /* Firefox all */
     -ms-user-select: all;      /* IE 10+ */
     user-select: all;
-
-    &--hidden {
-        opacity: 0;
-        height: 0;
-        margin-top: 0;
-    }
-
-
+    margin: -44px 0 36px 0;
 }
 
-.widget-info__code-textarea {
+.link-info__code-textarea {
     opacity: 0;
     width: 0;
     height: 0;
@@ -58,7 +51,7 @@
     left: -5000px;
 }
 
-.widget-info__get-code-button {
+.link-info__get-code-button {
 
     cursor: pointer;
     width: 240px;
