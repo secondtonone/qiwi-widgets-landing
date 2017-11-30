@@ -144,6 +144,7 @@ export default class App extends Component {
 
         const {idWidgetsBlock} = this.appSettings;
 
+
         let thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI')}>widget@qiwi.com</a></span>;
 
         if (merchantContact) {
