@@ -21,8 +21,7 @@ export default class App extends Component {
             merchantName: '',
             merchantAlias: '',
             merchantPublicKey: '',
-            merchantContact: '',
-            appSettings
+            merchantContact: ''
         }
     }
 
@@ -53,6 +52,8 @@ export default class App extends Component {
                         merchantAlias: data.result.merchant_alias_code,
                         merchantPublicKey: data.result.merchant_public_key
                     });
+
+                    self.changeTabTitle(data.result.merchant_name);
                 }
             });
         } else {
@@ -123,6 +124,10 @@ export default class App extends Component {
         });
 
         this.deleteMessage();
+    }
+
+    changeTabTitle = (title) => {
+        document.title = title;
     }
 
     deleteMessage = () => {

@@ -38,7 +38,7 @@ export default class LinkInfo extends Component {
 
             <div class="link-info__link-text">{link}</div>
 
-            <button type="button" class="link-info__get-code-button" onClick={() => {
+            <button type="button" class="link-info__get-code-button" disabled={!merchantAlias} onClick={() => {
                     this.copyToClipboard(link);
 
                      dataLayer.push({
