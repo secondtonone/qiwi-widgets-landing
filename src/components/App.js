@@ -6,6 +6,7 @@ import Header from './Header';
 import About from './About';
 import Widgets from './Widgets';
 import MessageBox from './MessageBox';
+import ThankingBlock from './ThankingBlock';
 
 import appSettings from './appSettings';
 
@@ -48,7 +49,8 @@ export default class App extends Component {
                 if(data.result.merchant_name) {
                     self.setState({
                         merchantName: data.result.merchant_name,
-                        merchantContact: data.result.merchant_contacts_html,
+                        merchantContact: data.result.merchant_email,
+                        merchantContactDesc: data.result.merchant_contacts_html,
                         merchantAlias: data.result.merchant_alias_code,
                         merchantPublicKey: data.result.merchant_public_key
                     });
@@ -145,16 +147,13 @@ export default class App extends Component {
         });
     }
 
-    render({},{message, merchantName, merchantPublicKey, merchantAlias, merchantContact}){
+    render({},{message, merchantName, merchantPublicKey, merchantAlias, merchantContact, merchantContactDesc}){
 
         const {idWidgetsBlock} = this.appSettings;
 
+        const qiwiEmail = 'widget@qiwi.com';
 
-        let thankingBlock = <span>Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами: <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI')}>widget@qiwi.com</a></span>;
-
-        if (merchantContact) {
-            thankingBlock = <span dangerouslySetInnerHTML={{__html:merchantContact}}></span>;
-        }
+        const qiwiContactDesc = 'Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами:';
 
         return (<div class={!merchantPublicKey?'page--missed-public-key-error': ''}>
             {!merchantPublicKey?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
@@ -163,7 +162,9 @@ export default class App extends Component {
                 <About/>
                 <Widgets {...this.appSettings} public_key={merchantPublicKey} merchantAlias={merchantAlias} addMessage={this.addMessage}/>
                 <div class="thanking">
-                    <div class="thanking__text">{thankingBlock}</div>
+                    <div class="thanking__text">
+                        <ThankingBlock email={merchantContact || qiwiEmail} contactDesc={merchantContactDesc || qiwiContactDesc} onClick={this.analyticsHandler('make.email', 'Make email from thanking block')}/>
+                    </div>
                 </div>
                 <MessageBox message={message}/>
             </main>

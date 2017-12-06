@@ -106,7 +106,8 @@ module.exports = {
             }
         })
     ] : [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
     ]),
 
 
