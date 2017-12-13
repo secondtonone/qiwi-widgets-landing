@@ -22,7 +22,8 @@ export default class App extends Component {
             merchantName: '',
             merchantAlias: '',
             merchantPublicKey: '',
-            merchantContact: ''
+            merchantContact: '',
+            merchantNotVeryfied: false
         }
     }
 
@@ -35,14 +36,7 @@ export default class App extends Component {
 
         const merchantAlias = this.getAlias();
 
-        console.log(merchantAlias)
-
         if(merchantPublicKey || merchantAlias) {
-
-            this.setState({
-                merchantPublicKey,
-                merchantAlias
-            });
 
             this.getMerchant(merchantPublicKey, merchantAlias).then(data => {
 
@@ -101,7 +95,7 @@ export default class App extends Component {
                 if(response.status >= 400){
 
                     self.setState({
-                        merchantPublicKey: ''
+                        merchantNotVeryfied: true
                     });
 
                     dataLayer.push({
@@ -147,7 +141,7 @@ export default class App extends Component {
         });
     }
 
-    render({},{message, merchantName, merchantPublicKey, merchantAlias, merchantContact, merchantContactDesc}){
+    render({},{message, merchantName, merchantPublicKey, merchantAlias, merchantContact, merchantContactDesc, merchantNotVeryfied}){
 
         const {idWidgetsBlock} = this.appSettings;
 
@@ -155,8 +149,8 @@ export default class App extends Component {
 
         const qiwiContactDesc = 'Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами:';
 
-        return (<div class={!merchantPublicKey?'page--missed-public-key-error': ''}>
-            {!merchantPublicKey?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
+        return (<div class={merchantNotVeryfied?'page--missed-public-key-error': ''}>
+            {merchantNotVeryfied?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
             <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName} public_key={merchantPublicKey}/>
             <main>
                 <About/>

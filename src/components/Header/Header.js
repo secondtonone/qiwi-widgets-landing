@@ -5,6 +5,8 @@ import './Header.scss';
 import logo from './assets/qiwi-logo.svg'
 import widgetPic from './assets/widget-pic.png'
 
+/*<a href={'/?public_key='+public_key} class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>*/
+
 export default class Header extends Component {
 
     render({idWidgetsBlock, merchantName, public_key}){
@@ -14,7 +16,7 @@ export default class Header extends Component {
         return (<header class="header">
             <div className="header__gradient-block-top"></div>
             <div className="header__gradient-block-bottom"></div>
-            <a href={'/?public_key='+public_key} class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>
+
             <section class="header__call-to-action">
                 <h1 class="header__title">Привлеки своих пользователей, покупателей и читателей к добрым делам!</h1>
                 <p class="header__description">{merchantName?`Размести платежную форму у себя на сайте и поддержи ${merchantName}.`:'Размести платежную форму у себя на сайте и поддержи благотворительность.'}</p>
