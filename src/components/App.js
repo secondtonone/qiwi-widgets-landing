@@ -53,6 +53,11 @@ export default class App extends Component {
                 }
             });
         } else {
+
+            self.setState({
+                merchantNotVeryfied: true
+            });
+
             dataLayer.push({
                 'event': 'publickey.error',
                 'eventAction': 'No public key'
