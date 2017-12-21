@@ -40,7 +40,7 @@ export default {
                 /*название в меню*/
                 name: '728px x 200px',
                 /*ссылка на него*/
-                link: 'big-widget-728x200',
+                link: 'widgets/big-widget-728x200',
                 /* прозрачность фона*/
                 transparent: false,
                 /* название
@@ -56,7 +56,7 @@ export default {
             },
             'widget300x300': {
                 name: '300px x 300px',
-                link: 'middle-widget-300x300',
+                link: 'widgets/middle-widget-300x300',
                 transparent: false,
                 title: '300 px x 300 px',
                 height: 300,
@@ -74,7 +74,7 @@ export default {
             },
             'widget300x180': {
                 name: '300px x 180px',
-                link: 'small-widget-300x180',
+                link: 'widgets/small-widget-300x180',
                 transparent: false,
                 title: '300 px x 180 px',
                 height: 180,
@@ -85,7 +85,7 @@ export default {
             },
             'smallButton': {
                 name: 'маленькая',
-                link: 'small-button-175x65',
+                link: 'widgets/small-button-175x65',
                 transparent: true,
                 title: '175 px x 65 px маленькая на прозрачном фоне',
                 height: 65,
@@ -96,7 +96,7 @@ export default {
             },
             'mediumButton': {
                 name: 'средняя',
-                link: 'middle-button-200x80',
+                link: 'widgets/middle-button-200x80',
                 transparent: true,
                 title: '200 px x 80 px средняя на прозрачном фоне',
                 height: 80,
@@ -107,7 +107,7 @@ export default {
             },
             'bigButton': {
                 name: 'большая',
-                link: 'big-button-220x100',
+                link: 'widgets/big-button-220x100',
                 transparent: true,
                 title: '220 px x 100 px большая на прозрачном фоне',
                 height: 100,
