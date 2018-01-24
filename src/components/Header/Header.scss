@@ -66,6 +66,7 @@
     }
 }
 
+
 .header__description {
     margin: 9px 0 0;
     padding: 0;
@@ -180,4 +181,31 @@
     top: 375px;
     left: 40px;
     right: 40px;
+}
+
+.header__widget-link {
+    z-index: 3;
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    text-align: center;    
+    margin: 0 auto;
+    position: absolute;
+    top: 504px;
+    left: 40px;
+    right: 40px;
+
+    & a {
+        text-decoration: none;
+        color: #0629a3;
+    }
+
+    &--lowwer {
+        top: 504px;
+    }
+
+    &--upper {
+        top: 64px;
+        z-index: 1;
+    }
 }
