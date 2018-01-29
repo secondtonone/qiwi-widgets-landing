@@ -10,7 +10,7 @@ export default {
         },{
             id: 'widgets',
             name: 'Виджет',
-            types: [ 'widget728x200', 'widget300x300', 'widget300x200']
+            types: [ 'widget728x200', 'widget300x300', 'widget300x180']
         }, {
             id: 'buttons',
             name: 'Кнопка',
@@ -28,7 +28,7 @@ export default {
         }, {
             title: 'Небольшой виджет',
             desc: 'Подходит для размещения после информации по теме. Есть в двух размерах — выбирайте, какой будет лучше смотреться на сайте!',
-            types: ['widget300x300', 'widget300x200']
+            types: ['widget300x300', 'widget300x180']
         }, {
             title: 'Кнопка',
             desc: 'Подходит, если вы делаете отдельную страничку или блок, рассказывающий о фонде. В конце вы можете разместить  кнопку, ведущую на платежную форму. Есть в трех размерах.',
@@ -72,12 +72,12 @@ export default {
                 title: '',
                 form: 'link'
             },
-            'widget300x200': {
-                name: '300px x 200px',
-                link: 'widgets/small-widget-300x200',
+            'widget300x180': {
+                name: '300px x 180px',
+                link: 'widgets/small-widget-300x180',
                 transparent: false,
-                title: '300 px x 200 px',
-                height: 200,
+                title: '300 px x 180 px',
+                height: 180,
                 width: 300,
                 form: 'widget',
                 params: {
